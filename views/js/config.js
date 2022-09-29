@@ -1,1 +1,1 @@
-var serverUrl = 'http://localhost:8000/https://test-segun-001.herokuapp.com/'
+var serverUrl = 'https://test-segun-001.herokuapp.com/'
