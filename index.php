@@ -11,12 +11,10 @@ use App\Repositories\PricesRepository;
 $router = new Router(new Request);
 
 $router->get('/', function () {
-    return file_get_contents ('views/list.html');
+    return file_get_contents(__dir__ . '/views/list.html');
 });
 
 $router->get('/list',  function () {
     $pricesController = new PricesController(new PricesManager, new PricesRepository);
     return $pricesController->list();
 });
-
-

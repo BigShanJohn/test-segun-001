@@ -15,7 +15,7 @@
 1. download or clone the folder
 2. create a database and run prices.sql
 3. edit the config.php file in the root to match your database configuration
-4. edit the views/config.js file  match your view configuration
+4. edit the views/js/config.js file  match your view configuration
 5. navigate to the folder of the project and run this command $php -S 127.0.0.1:8000
 
 #Important Links
