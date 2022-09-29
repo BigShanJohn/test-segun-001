@@ -21,7 +21,7 @@ class PricesRepository extends Database implements PricesRepositoryInterface
     function one(int $id): ?Prices
     {
         $this->query(
-            "SELECT description, price FROM prices WHERE id = :id"
+            "SELECT * FROM prices WHERE id = :id"
         );
         $this->bind(":id", $id);
         return $this->single();
@@ -35,7 +35,7 @@ class PricesRepository extends Database implements PricesRepositoryInterface
     function all(): ?array
     {
         $this->query(
-            "SELECT description, price FROM prices"
+            "SELECT * FROM prices"
         );
         return $this->resultset();
     }
