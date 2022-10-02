@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core;
+
 use \PDO;
 use \PDOException;
 
@@ -82,26 +83,31 @@ class Database
 
     public function lastInsertId()
     {
-        return $this->dbh->lastInsertId();
+        return $this->conn->lastInsertId();
     }
 
     public function beginTransaction()
     {
-        return $this->dbh->beginTransaction();
+        return $this->conn->beginTransaction();
     }
 
     public function endTransaction()
     {
-        return $this->dbh->commit();
+        return $this->conn->commit();
     }
 
     public function cancelTransaction()
     {
-        return $this->dbh->rollBack();
+        return $this->conn->rollBack();
     }
 
     public function debugDumpParams()
     {
         return $this->stmt->debugDumpParams();
+    }
+
+    public function lastError()
+    {
+        return $this->error;
     }
 }
