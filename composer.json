@@ -11,5 +11,7 @@
             "name": "Adeniji Olusegun"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }

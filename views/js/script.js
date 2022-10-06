@@ -1,5 +1,9 @@
 
 $(function () {
+    populateTable();
+});
+
+function populateTable() {
     $.get(`${serverUrl}list`, function (data, status) {
 
         jsonData = JSON.parse(data);
@@ -11,4 +15,4 @@ $(function () {
         }
         $("#list-body").html(html);
     });
-});
+}

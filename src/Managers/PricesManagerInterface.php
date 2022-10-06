@@ -7,9 +7,9 @@ use App\Models\Prices;
 interface PricesManagerInterface
 {
 
-    function add(Prices $price): int;
+    function add(Prices $price): Prices;
 
-    function update(Prices $price): bool;
+    function update(Prices $price): Prices;
 
     function delete(Prices $price): bool;
 }

@@ -24,10 +24,12 @@ class PricesRepository extends Database implements PricesRepositoryInterface
             "SELECT * FROM prices WHERE id = :id"
         );
         $this->bind(":id", $id);
-        return $this->single();
+        $data = $this->single();
+
+        return new Prices($data['description'], $data['price'], $data['id']);
     }
 
-     /**
+    /**
      * select all records from prices table.
      * @param id (int)
      */
@@ -37,6 +39,13 @@ class PricesRepository extends Database implements PricesRepositoryInterface
         $this->query(
             "SELECT * FROM prices"
         );
-        return $this->resultset();
+        $result = array();
+        $dataset = $this->resultset();
+
+        foreach ($dataset as $data) {
+            $result[] = new Prices($data['description'], $data['price'], $data['id']);
+        }
+
+        return $result;
     }
 }

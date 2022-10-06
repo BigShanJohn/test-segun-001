@@ -18,15 +18,16 @@ class PricesManager extends Database implements PricesManagerInterface
      * @param price (object)
      */
 
-    function add(Prices $price): int
+    function add(Prices $prices): Prices
     {
         $this->query(
             "INSERT INTO prices (description, price) VALUES (:description, :price)"
         );
-        $this->bind(":description", $price->description);
-        $this->bind(":price", $price->price);
+        $this->bind(":description", $prices->getDescription());
+        $this->bind(":price", $prices->getPrice());
         $this->execute();
-        return  $this->lastInsertId();
+        $prices->setId($this->lastInsertId());
+        return  $prices;
     }
 
 
@@ -36,15 +37,16 @@ class PricesManager extends Database implements PricesManagerInterface
      */
 
 
-    function update(Prices $price): bool
+    function update(Prices $prices): Prices
     {
         $this->query(
             "UPDATE prices  SET description = :description, price = :price WHERE  id = :id"
         );
-        $this->bind(":description", $price->description);
-        $this->bind(":price", $price->price);
-        $this->bind(":id", $price->id);
-        return $this->execute();
+        $this->bind(":description", $prices->getDescription());
+        $this->bind(":price", $prices->getPrice());
+        $this->bind(":id", $prices->getId());
+        $this->execute();
+        return $prices;
     }
 
 
@@ -58,7 +60,7 @@ class PricesManager extends Database implements PricesManagerInterface
         $this->query(
             "DELETE FROM prices  WHERE  id = :id"
         );
-        $this->bind(":id", $price->id);
+        $this->bind(":id", $price->getId());
         return $this->execute();
     }
 }

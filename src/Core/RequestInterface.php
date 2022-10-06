@@ -3,5 +3,5 @@ namespace App\Core;
 
 interface RequestInterface
 {
-    public function getBody();
+    public function getBody() :?array ;
 }

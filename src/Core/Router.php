@@ -30,7 +30,7 @@ class Router
      * Removes trailing forward slashes from the right of the route.
      * @param route (string)
      */
-    private function formatRoute($route)
+    private function formatRoute(string $route): string
     {
         $result = rtrim($route, '/');
         if ($result === '') {
@@ -39,12 +39,12 @@ class Router
         return $result;
     }
 
-    private function invalidMethodHandler()
+    private function invalidMethodHandler(): void
     {
         header("{$this->request->serverProtocol} 405 Method Not Allowed");
     }
 
-    private function defaultRequestHandler()
+    private function defaultRequestHandler(): void
     {
         header("{$this->request->serverProtocol} 404 Not Found");
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core;
 
 use \PDO;
@@ -11,6 +13,7 @@ class Database
     private $user = DB_USER;
     private $pass = DB_PASS;
     private $dbname = DB_NAME;
+    private $dbvendor = DB_VENDOR;
 
     private $conn;
     private $error;
@@ -19,7 +22,7 @@ class Database
     public function __construct()
     {
         // Set DSN
-        $connectionString = "mysql:host=" . $this->host . ";dbname=" . $this->dbname;
+        $connectionString = $this->dbvendor . ":host=" . $this->host . ";dbname=" . $this->dbname;
         // Set options
         $options = [
             PDO::ATTR_PERSISTENT => true,
